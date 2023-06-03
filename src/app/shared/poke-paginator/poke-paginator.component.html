@@ -1,0 +1,8 @@
+<nav>
+    <ul>
+        <li *ngFor="let page of pages">
+            <!-- <a href="?offset={{page.offset}}&limit={{page.limit}}">{{page.page}}</a> -->
+            <a [routerLink]="['/']" [queryParams]="{offset: page.offset, limit: page.limit}">{{page.page}}</a>
+        </li>
+    </ul>
+</nav>
