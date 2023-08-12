@@ -1,6 +1,17 @@
 @import '../../../config/rem-calc.scss';
 
 :host {
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(0, 0, 0, .3);
+        margin-bottom: rem-calc(20);
+        border-radius: rem-calc(10);
+        padding: rem-calc(10);
+        color: #efefef;
+    }
     ul {
         display: flex;
         justify-content: center;
@@ -17,6 +28,11 @@
             padding: 10px;
             border-radius: 5px;
             margin: rem-calc(5);
+
+            &.current {
+                background: #ee3f35;
+                color: var(--branco);
+            }
 
             a {
                 font-weight: 700;

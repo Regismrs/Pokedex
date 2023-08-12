@@ -3,6 +3,7 @@
 :host {
     form {
         display: flex;
+        position: relative;
         justify-content: space-between;
         align-items: center;
         background: rgba(255, 255, 255, 0.2);
@@ -14,5 +15,23 @@
             font-size: rem-calc(18);
             color: var(--branco);
         }
+
+        .search-button {
+            cursor: pointer;
+            display:flex;
+            background: #999;
+            border-bottom: 3px solid #666;
+            border-radius: rem-calc(10);
+            padding: rem-calc(10);
+            color: #333;
+        }
+
+        .search-hint {
+            position: absolute;
+            top: 6px;
+            font-size:small;
+            color: #232323;
+        }
+
     }
 }

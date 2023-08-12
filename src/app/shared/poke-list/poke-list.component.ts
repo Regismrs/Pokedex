@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'poke-list',
@@ -7,8 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class PokeListComponent {
   @Input() pokemons:any = new Array(10)
+  @Output() emmitSearch:EventEmitter<Array<{name:string, url:string}>> = new EventEmitter()
 
   constructor() { }
 
-
+  onSearch(event:Array<{name:string, url:string}>) {
+    this.emmitSearch.emit(event)
+  }
 }

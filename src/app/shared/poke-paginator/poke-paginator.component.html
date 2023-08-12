@@ -1,8 +1,13 @@
-<nav>
+<nav style="display:flex; align-items: center;">
+    <div >
+        <code>Encontrados {{results}} pokemons.</code>
+    </div>
     <ul>
-        <li *ngFor="let page of pages">
-            <!-- <a href="?offset={{page.offset}}&limit={{page.limit}}">{{page.page}}</a> -->
-            <a [routerLink]="['/']" [queryParams]="{offset: page.offset, limit: page.limit}">{{page.page}}</a>
-        </li>
+        Páginas 
+        <li *ngIf="curPage > 1" (click)="first()">1</li>
+        <li *ngIf="curPage > 2" (click)="previous()">{{curPage - 1}}</li>
+        <li class="current">{{curPage}}</li>
+        <li *ngIf="curPage < numPages" (click)="next()">{{curPage + 1}}</li>
+        <li *ngIf="numPages - curPage > 1" (click)="last()">{{numPages}}</li>
     </ul>
 </nav>

@@ -1,4 +1,19 @@
 <form>
-    <input type="text" placeholder="Buscar Pokemon...">
-    <img src="assets/icons/search-icon.svg" alt="Buscar pokemon">
+
+    <span *ngIf="pokemonsFiltered.length" class="search-hint">       
+        {{pokemonsFiltered.length}} pokemons contém...
+    </span>
+
+    <input list="pokemons" #keyword placeholder="Buscar Pokemon..." 
+        (keydown.enter)="false" (input)="filterNames(keyword.value)">
+
+    <span class="search-button">
+        <img src="assets/icons/search-icon.svg" alt="Buscar pokemon"
+            (click)="search(keyword.value)">
+    </span>
+
+    <datalist *ngIf="pokemonsListNames" id="pokemons">
+        <option *ngFor="let poke of pokemonsListNames" [value]="poke.name">
+    </datalist>
+    
 </form>

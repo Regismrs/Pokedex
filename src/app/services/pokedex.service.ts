@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { forkJoin, Observable } from 'rxjs';
+import { map, scan, expand, takeWhile, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class PokedexService {
   getPokemonsList(offset:number = 0, limit:number = 10):Observable<any> {
     return this.http.get<any>(`${this.apiurl}pokemon/?offset=${offset}&limit=${limit}`).pipe(
       tap (
-        res => res
+        //res => res
       ),
       tap (
         res => { 
@@ -30,8 +30,34 @@ export class PokedexService {
     )   
   }
 
+  getPokemonsListFiltered(urls:Array<{name:string, url:string}>):Observable<any> {
+    const observables:Observable<any>[] = []
+    for (const obj of urls) {
+      const detailedInfo = this.http.get<any>(obj.url).pipe(
+        map((response) => ({...obj, status: response}))
+      )
+      observables.push(detailedInfo)
+    }
+
+    return forkJoin(observables)
+  }
+
+  getPokemonsListBasic(page:string = ''):Observable<any> {
+    if (!page) page = `${this.apiurl}pokemon/?offset=0&limit=500`
+    return this.http.get<any>(page)
+  }
+
   getPokemon(url:string):Observable<any> {
     console.log(url)
     return this.http.get<any>(url)
+  }
+
+  getPokemonsListNames(page:string = ''):Observable<any> {
+    if (!page) page = `${this.apiurl}pokemon/?offset=0&limit=100`
+    return this.http.get<any>(page).pipe(
+      expand(response => this.http.get<any>(response.next)),
+      takeWhile(res => res.next, true),
+      scan((acc, r) => acc.concat(...r.results), [])
+    )
   }
 }

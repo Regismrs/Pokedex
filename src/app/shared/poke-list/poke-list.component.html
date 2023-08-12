@@ -1,23 +1,27 @@
-<ng-template ngFor let-pokemon [ngForOf]="pokemons">
-    <a class="pokemon" *ngIf="pokemon.status; else loading">
-        <section class="pokemon__status">
-            <h2>{{pokemon.name }}</h2>
+<poke-search (emmitSearch)="onSearch($event)"></poke-search>
 
-            <ul>
-                <li *ngFor="let type of pokemon?.status?.types">{{type?.type?.name}}</li>
-            </ul>
-            
-        </section>
+<section class="listagem">
+    <ng-template ngFor let-pokemon [ngForOf]="pokemons">
+        <a [routerLink]="['details', pokemon.status.id]" class="pokemon" *ngIf="pokemon.status; else loading">
+            <section class="pokemon__status">
+                <h2>{{pokemon.name }}</h2>
 
-        <section class="pokemon__image">
-            <img src="{{pokemon.status.sprites.front_default}}" alt="">
-        </section>
-    </a>
+                <ul>
+                    <li *ngFor="let type of pokemon?.status?.types">{{type?.type?.name}}</li>
+                </ul>
+                
+            </section>
 
-    <ng-template #loading>
-        <div class="loading">
-            <img src="assets/loading.gif" alt="Aguarde, carregando dados">
-        </div>
+            <section class="pokemon__image">
+                <img src="{{pokemon.status.sprites.front_default}}" alt="">
+            </section>
+        </a>
+
+        <ng-template #loading>
+            <div class="loading">
+                <img src="assets/loading.gif" alt="Aguarde, carregando dados">
+            </div>
+        </ng-template>
+
     </ng-template>
-
-</ng-template>
+</section>

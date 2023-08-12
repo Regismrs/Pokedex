@@ -1,16 +1,21 @@
-import { Component, Input, DoCheck } from '@angular/core';
+import { Component, Input, DoCheck, SimpleChanges, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'poke-paginator',
   templateUrl: './poke-paginator.component.html',
   styleUrls: ['./poke-paginator.component.scss']
 })
-export class PokePaginatorComponent{
-  @Input() results: number = 1
+export class PokePaginatorComponent implements OnChanges{
+  @Input() results:number = 0
   @Input() perpage: number = 10 
   @Input() offset: number = 0
 
+  @Output() emmitChangePage:EventEmitter<{page:number, limit:number, offset:number}> = new EventEmitter()
+  
   public pages:Array<any> = []
+  public curPage:number = 1
+  public numPages:number = 1
 
   constructor() { }
 
@@ -18,43 +23,40 @@ export class PokePaginatorComponent{
     this.paginator()
   }
 
-  ngDoCheck() {
-    console.log('Paginating...')
-    this.paginator()
+  ngOnChanges(changes:SimpleChanges) {
+    if (changes['results']) {
+      this.first()
+      this.paginator()
+    } 
   }
 
   paginator() {
-    this.pages = []
-    if (this.perpage > 0) {
-      const curPage = this.offset / this.perpage
-      const totalPages = Math.ceil(this.results / this.perpage)
-      let firstPage = 1
-      let lastPage = totalPages
-
-      if ( totalPages - curPage <= 6) {
-        firstPage = lastPage - 10
-      } else if ( curPage > 6) {
-        firstPage = curPage - 4
-        lastPage = curPage + 4
-      } else {
-        lastPage = 10
-      }
-
-      if (firstPage != 1) {
-        this.pages.unshift(this.page(1))
-      }
-
-      for (let i = firstPage; i <= lastPage; i++) {
-        this.pages.push( this.page(i) )
-      }
-
-      if (lastPage != totalPages) this.pages.push(this.page(totalPages))
-      console.log(this.pages)
-
-    }
+    this.numPages = Math.ceil(this.results / this.perpage)
+    //alert(this.numPages)
   }
 
-  page(page:number):object {
-    return {page: page, limit: this.perpage, offset: page * this.perpage}
+  next() {
+    this.curPage++
+    this.changePage()
   }
+
+  previous() {
+    this.curPage--
+    this.changePage()
+  }
+
+  first() {
+    this.curPage = 1
+    this.changePage()
+  }
+
+  last() {
+    this.curPage = this.numPages
+    this.changePage()
+  }
+
+  changePage() {
+    this.emmitChangePage.emit({page: this.curPage, limit: this.perpage, offset: this.perpage * (this.curPage - 1)})
+  }
+
 }

@@ -1,8 +1,9 @@
 <poke-header></poke-header>
 
 <main>
-    <poke-search></poke-search>
-    <poke-list [pokemons]="pokemons"></poke-list>
 
-    <poke-paginator [results]="1000" [perpage]="limit" [offset]="offset"></poke-paginator>
+    <poke-list [pokemons]="pokemons" (emmitSearch)="onSearch($event)"></poke-list>
+
+    <poke-paginator [results]="resultsCount" [perpage]="limit" (emmitChangePage)="onChangePage($event)"></poke-paginator>
+    
 </main>
