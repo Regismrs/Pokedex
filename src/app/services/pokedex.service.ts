@@ -48,7 +48,6 @@ export class PokedexService {
   }
 
   getPokemon(url:string):Observable<any> {
-    console.log(url)
     return this.http.get<any>(url)
   }
 

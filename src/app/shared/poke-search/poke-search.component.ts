@@ -14,7 +14,6 @@ export class PokeSearchComponent{
     filterNames(keyword:string):void {
       if (this.pokemonsListNames.length === 0) this.fetchListNames();
       this.pokemonsFiltered = this.pokemonsListNames.filter(p => p.name.indexOf(keyword.toLowerCase()) !== -1)
-      console.log(this.pokemonsFiltered)
     }
 
     search(keyword:string):void {
@@ -29,7 +28,6 @@ export class PokeSearchComponent{
         const jso = localStorage.getItem("PokemonsListNamesUrls") || ''
         this.pokemonsListNames = JSON.parse(jso).sort(
           (a:any, b:any) => (a.name > b.name) ? 1 : (a.name < b.name) ? -1 : 0)
-        console.info("TOTAL: " + this.pokemonsListNames.length)
       }
     }
 }

@@ -16,27 +16,11 @@ export class HomeComponent implements OnInit {
   public limit:number = 6
   public resultsCount = 0
 
-  constructor(private pokeService: PokedexService, private activatedRoute: ActivatedRoute) {
-    //this.activatedRoute.queryParams.subscribe( (queryParams:any) => {
-     // this.limit = queryParams.limit? queryParams.limit : 6
-      //this.getAllPokemons()
-    //})
-  }
+  constructor(private pokeService: PokedexService) { }
 
   ngOnInit() {
     this.getAllPokemonsBasicInfo()
   }
-  
-/*
-  getAllPokemons() {
-    this.pokeService.getPokemonsList(0, this.limit).subscribe({
-      next: (r) => {
-        this.pokemons = r.results
-        this.resultsCount = r.count
-      },
-      error: (e) => console.warn(e)
-    })
-  }*/
 
   getAllPokemonsBasicInfo() {
     this.pokeService.getPokemonsListNames().subscribe({
@@ -53,7 +37,6 @@ export class HomeComponent implements OnInit {
   onSearch(event:Array<{name:string, url:string}>) {
     // Atualiza a quantidade de resultados para o paginador
     this.resultsCount = event.length
-    console.warn("HOME: " + event.length)
 
     // Manda uma fatia pro service recupera e põe em pokemons
     this.pokemonsFilteredDataList = event
