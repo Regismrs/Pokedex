@@ -7,9 +7,9 @@
     <input list="pokemons" #keyword placeholder="Buscar Pokemon..." 
         (keydown.enter)="false" (input)="filterNames(keyword.value)">
 
-    <span class="search-button">
+    <span class="search-button" (click)="search(keyword.value)">
         <img src="assets/icons/search-icon.svg" alt="Buscar pokemon"
-            (click)="search(keyword.value)">
+            >
     </span>
 
     <datalist *ngIf="pokemonsListNames" id="pokemons">

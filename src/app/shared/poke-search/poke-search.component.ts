@@ -7,7 +7,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@
 })
 export class PokeSearchComponent implements OnInit{
     @Output() public emmitSearch:EventEmitter<Array<{name: string, url:string}>> = new EventEmitter()
-    public pokemonsListNames:Array<{name:string, url:string}> = [{name:'', url:''}]
+    public pokemonsListNames:Array<any> = []
     public pokemonsFiltered:Array<{name:string, url:string}> = []
     private lastKeywordSearched:string = ""
 

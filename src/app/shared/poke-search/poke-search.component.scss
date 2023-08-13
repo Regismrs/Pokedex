@@ -19,11 +19,16 @@
         .search-button {
             cursor: pointer;
             display:flex;
-            background: #999;
-            border-bottom: 3px solid #666;
+            background: #888;
+            border-bottom: 5px solid #666;
             border-radius: rem-calc(10);
             padding: rem-calc(10);
             color: #333;
+
+            &:hover {
+                background: #999;
+                border-bottom: 5px solid #666;
+            }
         }
 
         .search-hint {
