@@ -5,7 +5,7 @@
     </span>
 
     <input list="pokemons" #keyword placeholder="Buscar Pokemon..." 
-        (keydown.enter)="false" (input)="filterNames(keyword.value)">
+        (keydown.enter)="false" (keyup.enter)="search(keyword.value)" (input)="filterNames(keyword.value)">
 
     <span class="search-button" (click)="search(keyword.value)">
         <img src="assets/icons/search-icon.svg" alt="Buscar pokemon"
