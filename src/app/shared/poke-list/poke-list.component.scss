@@ -17,7 +17,6 @@
             margin-bottom: rem-calc(10);
             border-radius: rem-calc(10);
             color: var(--primary-color);
-            z-index: -2;
 
             &__status {
                 h2 {
@@ -26,7 +25,6 @@
                     font-weight: 700;
                     margin-bottom: rem-calc(10);
                     text-transform: capitalize;
-                    z-index: 10;
                 }
                 ul {
                     display: flex;
@@ -52,7 +50,6 @@
                 right: rem-calc(20);
                 bottom: rem-calc(20);
                 background: url("./../../../assets/bg/background-list-pokemons.svg");
-                z-index: -1;
 
                 img {
                     width: rem-calc(120);

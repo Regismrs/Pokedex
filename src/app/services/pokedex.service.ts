@@ -51,6 +51,16 @@ export class PokedexService {
     return this.http.get<any>(url)
   }
 
+  getPokemonDetails(id:number):Observable<any> {
+    const pokemon = `${this.apiurl}pokemon/${id}`
+    const name = `${this.apiurl}pokemon-species/${id}`
+
+    return forkJoin([
+      this.getPokemon(pokemon), 
+      this.getPokemon(name)
+    ])
+  }
+
   getPokemonsListNames(page:string = ''):Observable<any> {
     if (!page) page = `${this.apiurl}pokemon/?offset=0&limit=100`
     return this.http.get<any>(page).pipe(
