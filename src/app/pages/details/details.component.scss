@@ -15,7 +15,7 @@
 			padding: 0 rem-calc(30);
 
 			h1 {
-				color: var(--branco);
+				color: #fff;
 				font-size: rem-calc(32);
 				text-transform: capitalize;
 			}
@@ -61,7 +61,8 @@
                 padding: rem-calc(10);
                 color: var(--branco);
                 text-decoration: none;
-
+                text-align: center;
+                
                 &:hover {
                     background: #EA492E;
                     border-bottom: 5px solid #B7160B;

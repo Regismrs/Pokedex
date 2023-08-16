@@ -39,7 +39,7 @@ export class PokedexService {
       observables.push(detailedInfo)
     }
 
-    return forkJoin(observables)
+    return forkJoin(observables).pipe(scan((res, curr) => res.concat(...curr), []))
   }
 
   getPokemonsListBasic(page:string = ''):Observable<any> {
