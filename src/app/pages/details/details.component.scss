@@ -51,24 +51,6 @@
 				animation-fill-mode: none !important;
 			}
 
-            .back-button {
-                cursor: pointer;
-                display: block;
-                width: 100px;
-                background: #D9381D;
-                border-bottom: 5px solid #B7160B;
-                border-radius: rem-calc(10);
-                padding: rem-calc(10);
-                color: var(--branco);
-                text-decoration: none;
-                text-align: center;
-                
-                &:hover {
-                    background: #EA492E;
-                    border-bottom: 5px solid #B7160B;
-                }
-            }
-
 			&__statistics {
 				display: flex;
 				flex-direction: column;
@@ -134,5 +116,24 @@
 				}
 			}
 		}
+
+		.back-button {
+			cursor: pointer;
+			display: block;
+			width: 100px;
+			background: #D9381D;
+			border-bottom: 5px solid #B7160B;
+			border-radius: rem-calc(10);
+			padding: rem-calc(10);
+			color: var(--branco);
+			text-decoration: none;
+			text-align: center;
+			
+			&:hover {
+				background: #EA492E;
+				border-bottom: 5px solid #B7160B;
+			}
+		}
+		
 	}
 }
