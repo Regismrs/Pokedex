@@ -23,7 +23,6 @@ export class DetailsComponent implements OnInit {
 
     return this.pokeService.getPokemonDetails(id).subscribe({
       next: response => {
-        console.log(response)
         this.pokemon = response
       },
       error: e => this.apiError = true
