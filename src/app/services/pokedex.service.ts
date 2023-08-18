@@ -12,24 +12,6 @@ export class PokedexService {
 
   constructor(private http: HttpClient) { }
 
-  getPokemonsList(offset:number = 0, limit:number = 10):Observable<any> {
-    return this.http.get<any>(`${this.apiurl}pokemon/?offset=${offset}&limit=${limit}`).pipe(
-      tap (
-        //res => res
-      ),
-      tap (
-        res => { 
-          res.results.map( (resPokemons:any) => {
-            this.http.get(resPokemons.url).pipe(
-              map((res:any) => res)
-            ).subscribe({ next: (res) => resPokemons.status = res})
-
-          })
-        }
-      )
-    )   
-  }
-
   getPokemonsListFiltered(urls:Array<{name:string, url:string}>):Observable<any> {
     const observables:Observable<any>[] = []
     for (const obj of urls) {
@@ -39,12 +21,7 @@ export class PokedexService {
       observables.push(detailedInfo)
     }
 
-    return forkJoin(observables).pipe(scan((res, curr) => res.concat(...curr), []))
-  }
-
-  getPokemonsListBasic(page:string = ''):Observable<any> {
-    if (!page) page = `${this.apiurl}pokemon/?offset=0&limit=500`
-    return this.http.get<any>(page)
+    return forkJoin(observables)
   }
 
   getPokemon(url:string):Observable<any> {
