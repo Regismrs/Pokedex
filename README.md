@@ -1,27 +1,49 @@
 # Pokedex
+Bem-vindo à Pokédex! Este é um projeto simples que utiliza a estrutura do Angular para criar uma interface que exibe informações sobre diversos Pokémon.
+Acesse o link [https://regismrs.github.io/Pokedex](https://regismrs.github.io/Pokedex) para conferir a última versão.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+## Funcionalidades
 
-## Development server
+- Lista de Pokémon: Visualize uma lista de Pokémon com seus nomes e imagens.
+- Detalhes do Pokémon: Clique em um Pokémon para ver mais informações, como tipos, habilidades e estatísticas.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Pré-requisitos
 
-## Code scaffolding
+Certifique-se de ter o seguinte instalado antes de executar o projeto:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js: [https://nodejs.org/](https://nodejs.org/)
+- Angular CLI: Após a instalação do Node.js, execute o seguinte comando para instalar o Angular CLI:
+  
+```shell
+npm install -g @angular/cli
+```
 
-## Build
+## Como executar o projeto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone este repositório:
+```shell
+git clone https://github.com/regismrs/pokedex.git
+```
 
-## Running unit tests
+2. Navegue até o diretório do projeto:
+```shell
+cd pokedex
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Instale as dependências:
+```shell
+npm install
+```
 
-## Running end-to-end tests
+4. Inicie o servidor de desenvolvimento:
+```shell
+ng serve
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+5. Abra o navegador e acesse: [http://localhost:4200/](http://localhost:4200/)
 
-## Further help
+## Contribuição
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Contribuições são bem-vindas! Se você quiser adicionar novas funcionalidades, corrigir bugs ou melhorar o projeto de alguma forma, fique à vontade para enviar um pull request.
+
+Este é um projeto de aprendizado criado por [Regismrs](https://github.com/Regismrs). Sinta-se à vontade para entrar em contato em caso de dúvidas ou sugestões!
