@@ -38,7 +38,12 @@ export class PokedexService {
     ])
   }
 
-  getPokemonsListNames(page:string = ''):Observable<any> {
+  getPokemonsListNamesRecursive(page:string = ''):Observable<any> {
+    if (!page) page = `${this.apiurl}pokemon/?offset=0&limit=151`
+    return this.http.get<any>(page)
+  }
+  
+  getPokemonsListNamesRecursive(page:string = ''):Observable<any> {
     if (!page) page = `${this.apiurl}pokemon/?offset=0&limit=100`
     return this.http.get<any>(page).pipe(
       expand(response => this.http.get<any>(response.next)),
