@@ -1,6 +1,5 @@
 # Pokedex
 Bem-vindo à Pokédex! Este é um projeto simples que utiliza a estrutura do Angular para criar uma interface que exibe informações sobre diversos Pokémon.
-Acesse o link [https://regismrs.github.io/Pokedex](https://regismrs.github.io/Pokedex) para conferir a última versão.
 
 ## Funcionalidades
 
